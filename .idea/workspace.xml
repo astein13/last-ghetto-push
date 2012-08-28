@@ -32,10 +32,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="edit.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/fliers/edit.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="66" selection-start="682" selection-end="682" vertical-scroll-proportion="-14.384615">
+            <state line="22" column="65" selection-start="676" selection-end="676" vertical-scroll-proportion="0.41694537">
               <folding />
             </state>
           </provider>
@@ -50,10 +50,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fliers_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="fliers_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/fliers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="7" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.5579632">
+            <state line="37" column="13" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -75,8 +75,8 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/fliers.css" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/fliers.css.scss" />
         <option value="$PROJECT_DIR$/app/views/fliers/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/fliers/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/fliers_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/fliers/edit.html.erb" />
       </list>
     </option>
   </component>
@@ -693,16 +693,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/fliers/edit.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/fliers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="66" selection-start="682" selection-end="682" vertical-scroll-proportion="-14.384615">
+        <state line="37" column="13" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/fliers_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/fliers/edit.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="7" selection-start="1754" selection-end="1754" vertical-scroll-proportion="0.5579632">
+        <state line="22" column="65" selection-start="676" selection-end="676" vertical-scroll-proportion="0.41694537">
           <folding />
         </state>
       </provider>
