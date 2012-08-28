@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <%= render 'layouts/header' %>
+    </head>
+
+    <div id="body">
+         <div class="container">
+
+                <br/><br/><br/><br/>
+
+              <div id="newborder">
+                        <div id="crfldata">
+
+                                <h1> Create Flier </h1>
+
+                                  </br></br>
+
+                                <%= form_for @flier, :url => {:action => :update, :flier_id => params[:flier_id]} do |f| %>
+
+                                <div id="crflimg">
+                                    <%= f.label 'Upload an Image' %>
+                                    <%= f.file_field :image %>
+                                </div>
+
+                                <div id="crfltitle">
+                                    <%= f.label :title %>
+                                    <%= f.text_field :title %>
+                                </div>
+
+                                <div id="crflchannel">
+                                    <%= f.label :channel_id %>
+                                    <%= f.select :channel_id, options ={'All' => '1',
+                                            'Academic' => '2',
+                                            'Arts' => '3',
+                                            'Nightlife' => '4',
+                                            'Sports' => '5'}%>
+                                </div>
+
+                                <div id="crflprivacy">
+                                    <%= f.select :privacy_status, options = {'Public' => '1', 'Private' => '0'} %>
+                                </div>
+
+                                <div id="crfldateinput">
+                                    <%= f.label 'Date' %>
+                                    <%= f.text_field :start_time %>
+                                </div>
+
+                                <div id="crfltagline">
+                                    <%= f.label :tag, 'Tagline' %>
+                                    <%= f.text_field :tag, :class => 'flytag' %>
+                                </div>
+
+                                <div id="crfldescription">
+                                    <%= f.label :description, 'Description' %>
+                                    <%= f.text_area :description, :class => 'flydesc' %>
+                                </div>
+
+                                <%= f.hidden_field :community_id, :value => current_user.community_id %>
+                                <%= f.hidden_field :creator_id, :value => current_user.id %>
+
+                                <%= f.submit class: "btn" %>
+                                <% end %>
+
+                        </div>
+              </div>
+         </div>
+    </div>
+
+    <div id="footer"><%= render 'layouts/footer' %></div>
+
+</html>
