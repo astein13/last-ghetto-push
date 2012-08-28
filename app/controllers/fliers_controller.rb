@@ -3,7 +3,7 @@ class FliersController < ApplicationController
 
 
   def show
-    @flier = Flier.find_by_id(params[:flier_id])
+    @flier = Flier.find_by_id(params[:id])
     @channels = Channel.all
   end
 
@@ -56,9 +56,9 @@ class FliersController < ApplicationController
   end
   def update
          @new_flier = params[:flier]   
-         @flier = Flier.find(params[:flier_id])
+         @flier = Flier.find(params[:id])
       if @flier.update_attributes!(@new_flier)
-      redirect_to :controller => 'fliers', :action => 'show', :flier_id => params[:flier_id]
+      redirect_to :controller => 'fliers', :action => 'show', :id => params[:id]
       end
   end
 
