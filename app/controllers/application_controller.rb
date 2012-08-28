@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
      end
 
     def can_view_flier?
-    @flier = Flier.find_by_id(params[:id])
+    @flier = Flier.find_by_id(params[:flier_id])
       unless @flier.privacy_status == '1'
         
         @myfliers = current_user.fliers

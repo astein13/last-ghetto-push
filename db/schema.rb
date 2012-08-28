@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120827163737) do
+ActiveRecord::Schema.define(:version => 20120828193147) do
 
   create_table "channels", :force => true do |t|
     t.string   "channel"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20120827163737) do
   create_table "fliers", :force => true do |t|
     t.string   "title"
     t.string   "tag"
-    t.string   "description"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "community_id"
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20120827163737) do
     t.integer  "org_creator_id"
     t.integer  "channel_id"
     t.integer  "privacy_status"
+    t.text     "description"
   end
 
   create_table "friendships", :force => true do |t|

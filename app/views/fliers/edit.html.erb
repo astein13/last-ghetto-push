@@ -17,12 +17,14 @@
 
                                 <h1> Create Flier </h1>
 
-                                  </br></br>
+                                  <br/><br/>
 
-                                <%= form_for @flier, :url => {:action => :update, :fid => params[:flier_id]},
-                                    :html => {:multipart => true} do |f| %>
+                                <%= form_for @flier, :url => {:action => :update, :flier_id => params[:flier_id]},
+                                    :html => {:multipart => true}, :validate => true do |f| %>
 
                                 <div id="crflimg">
+                                  <p> Current Photo: </p>
+                                    <%= image_tag @flier.image.url(:thumb) %>
                                     <%= f.label 'Upload an Image' %>
                                     <%= f.file_field :image %>
                                 </div>
@@ -34,11 +36,11 @@
 
                                 <div id="crflchannel">
                                     <%= f.label :channel_id %>
-                                    <%= f.select :channel_id, options ={'All' => '1',
-                                            'Academic' => '2',
-                                            'Arts' => '3',
-                                            'Nightlife' => '4',
-                                            'Sports' => '5'}%>
+                                    <%= f.select :channel_id, options ={
+                                            'Academic' => '1',
+                                            'Arts' => '2',
+                                            'Nightlife' => '3',
+                                            'Sports' => '4'}%>
                                 </div>
 
                                 <div id="crflprivacy">
@@ -47,7 +49,7 @@
 
                                 <div id="crfldateinput">
                                     <%= f.label 'Date' %>
-                                    <%= f.text_field :start_time %>
+                                    <%= f.text_field :start_time  %>
                                 </div>
 
                                 <div id="crfltagline">

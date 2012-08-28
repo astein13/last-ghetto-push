@@ -5,7 +5,7 @@ class Flier < ActiveRecord::Base
     :end_time, :group, :start_time, :tag, :title, :privacy_status, :channel_id, :creator_id, :added_count
     validates :community_id, :presence => true
     validates :description, :presence => {  :message => "You need to describe your event"}
-    validates :image, :presence => { :message => "You must upload an image for your event." }
+    validates :image, :presence => { :message => "You must upload an image for your event." }, :on => :create
     validates :start_time, :presence => { :message => "You must select a start time for your event."}
     validates :title, :presence => {  :message => "Your event needs a title." }
     validates :privacy_status, :presence => true

@@ -3,7 +3,7 @@ class FliersController < ApplicationController
 
 
   def show
-    @flier = Flier.find_by_id(params[:id])
+    @flier = Flier.find_by_id(params[:flier_id])
     @channels = Channel.all
   end
 
@@ -44,7 +44,7 @@ class FliersController < ApplicationController
   
   def edit
     @flier = Flier.find_by_id(params[:flier_id])
-    @flier.start_time = @flier.start_time.in_time_zone(current_user.timezone).strftime('%m/%d/%Y @ %l:%M %p')
+    #@flier.start_time = @flier.start_time.in_time_zone(current_user.timezone).strftime('%m/%d/%Y %l:%M %p')
     @creator_id = @flier.creator_id.to_i
     @channels = Channel.all
    
@@ -55,9 +55,9 @@ class FliersController < ApplicationController
     end
   end
   def update
-    @channels = Channel.all
-        @flier = Flier.find(params[:fid])
-      if @flier.update_attributes!(params[:flier])
+         @new_flier = params[:flier]   
+         @flier = Flier.find(params[:flier_id])
+      if @flier.update_attributes!(@new_flier)
       redirect_to :controller => 'fliers', :action => 'show', :flier_id => params[:flier_id]
       end
   end
