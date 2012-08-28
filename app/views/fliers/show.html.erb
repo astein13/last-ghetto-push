@@ -1,36 +1,41 @@
 <html>
   <head>
+        <%= stylesheet_link_tag    "application", media: "all" %>
+        <%= javascript_include_tag "application" %>
+        <%= csrf_meta_tags %>
         <%= render 'layouts/header' %>
   </head>
   <div id="body">
         </br></br></br></br></br></br>
 
         <div class="container">
-          <div id="newborder">
+              <div id="newborder">
 
+                    <div class="shfltit"><h1><%= @flier.title %></h1></div>
 
-            <h1><%= @flier.title %></h1><h2><%= @flier.tag %></h2>
-            <%= image_tag @flier.image.url, class: "showimg" %>
-            <div class="desc"> <h3><%= @flier.description %> </h3></br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-            in culpa qui officia deserunt mollit anim id est laborum.</div>
+                    <%= image_tag @flier.image.url, class: "showimg" %>
 
-              </br></br>
+                    <div class="shfltag"><h2><%= @flier.tag %></h2></div>
 
-              <div id="showbtnlist">
-                <%= button_to 'Add to MyBoard', myboard_add_flier_path(:flier_id => @flier.id), class: "btn showbtns" %>
-                <%= button_to 'Edit flier', :controller => "fliers", :action => "edit", :flier_id => @flier.id, class: "btn showbtns" %>
-                <%= button_to 'Invite friends', invite_path(:flier_id => @flier.id), class: "btn showbtns" %>
-                <%= button_to 'Delete this flier', { :controller => "fliers",
-                                                   :action => "destroy",
-                                                   :flier_id => @flier.id},
-                                                   :confirm => 'Are you sure?', class: "btn showbtns" %>
+                    <div class="shfldesc"><h3><%= @flier.description %></h3>
+
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+                    in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+                      <ul class="showbtnlist">
+                        <li><%= button_to 'Add to MyBoard', myboard_add_flier_path(:flier_id => @flier.id), class: "btn btn-success" %></li>
+                        <li><%= button_to 'Edit flier', { :controller => "fliers", :action => "edit", :flier_id => @flier.id}, class: "btn" %></li>
+                        <li><%= button_to 'Invite friends', invite_path(:flier_id => @flier.id), class: "btn" %></li>
+                        <li><%= button_to 'Delete this flier', { :controller => "fliers",
+                                                           :action => "destroy",
+                                                           :flier_id => @flier.id},
+                                                           :confirm => 'Are you sure?', class: "btn btn-danger" %></li>
+                      </ul>
+
               </div>
-
-            </div>
         </div>
     </div>
   <div id="footer"><%= render 'layouts/footer' %></div>
