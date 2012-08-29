@@ -8,9 +8,9 @@ class LiveboardController < ApplicationController
     if session[:user_id] #check if this is a user or an organization, if user do the following
     # initiate an array to hold the user's myfliers that will be displayed on liveboard
     
-
+    @top_three = @community.top_fliers.upcoming(Time.zone.now + 7200)
  
-    @fliers_for_liveboard = current_user.fliers_for_liveboard.upcoming(Time.zone.now + 7200).in_my_community(current_user.community_id).joins(:myfliers)
+    @fliers_for_liveboard = current_user.fliers_for_liveboard.upcoming(Time.zone.now + 7200).in_my_community(current_user.community_id).joins(:myfliers) - @top_three
   
     #create an array of all fliers that the user has already added
     @current_user_added_fliers = current_user.added_fliers

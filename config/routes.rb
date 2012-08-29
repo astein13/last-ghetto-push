@@ -49,8 +49,8 @@ Lbdevelopmentv03::Application.routes.draw do
 
   post "myfliers/send_invite"
   resources :users
-  resources :fliers
-  
+
+  put "fliers/update"
 
   get "liveboard/index"
 

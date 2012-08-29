@@ -12,6 +12,11 @@ class Community < ActiveRecord::Base
            :source =>:flier,
            :conditions => ['privacy_status=?', '0']
 
+  has_many :top_fliers,
+           :class_name => "Flier",
+           :source => :flier,
+           :order => :added_count,
+           :limit => 3
 
   has_many :users
   

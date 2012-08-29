@@ -3,8 +3,7 @@
 
 jQuery ->
   $('#flier_start_time').datetimepicker({
-  timeFormat: 'h:mm t'
-  dateFormat: 'mm-dd-yy',
+  dateFormat: 'mm-d-yy',
   ampm: true,
   stepMinute: 5,
   separator: ' @ '
