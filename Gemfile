@@ -27,7 +27,7 @@ gem 'strip_attributes'
 #gem 'unicorn'
 #gem 'newrelic_rpm'
 gem 'chronic'
-
+gem 'validates_timeliness'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -1,9 +1,13 @@
 class Organization < ActiveRecord::Base
+  
   attr_accessible :name, :community_id, :email, :image, :password, :password_confirmation
 
   has_secure_password
-  validates_uniqueness_of :email
-  validates :email, :presence => {:message => 'You must enter an email for your organization.'}
+  
+  validates_email :email
+
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, 
+    :message => 'Please enter a valid email address.'
   validates :community_id, :presence => {:message => 'Please select a community for your organizatoin'}
   validates :name, :presence => { :message => 'Your organization needs a name.'}
   validates :image, :presence => { :message => 'Your organization needs an image.'}

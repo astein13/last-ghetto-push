@@ -8,6 +8,7 @@ class Flier < ActiveRecord::Base
     validates :description, :presence => {  :message => "You need to describe your event"}, :length => {:in => 10..500, :too_short => "Your event needs a longer description.", :too_long => "Your event needs a shorter description."}
     validates :image, :presence => { :message => "You must upload an image for your event." }, :on => :create
     validates :start_time, :presence => { :message => "You must select a start time for your event."}
+    validates_datetime :start_time, :on_or_after =>  Time.now, :on_or_after_message => 'Event must be held in the future.'
     validates :title, :presence => { :message => "Your event needs a title." }, :length => { :in => 4..40, :too_short => "Your event title must be at least four characters long.", :too_long => "Your event title must be less than forty characters long."}
     validates :privacy_status, :presence => true
 

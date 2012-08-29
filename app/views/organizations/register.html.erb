@@ -16,6 +16,7 @@ organization by filling out this form.</p>
 <%= form_for @organization, :html => {:multipart => true}, :validate => true do |f| %>
 <%= f.label :email %>
 <%= f.text_field  :email, :value => @email  %>
+<br/><br/>
 <%= f.label :community_id, 'Select Community:' %>
 <%= f.select :community_id, options = {'Community' => '',
                                        'Amherst College' => '1',
