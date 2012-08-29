@@ -14,14 +14,14 @@
 
           <h1><%= @channel_name %> </h1>
 
-            <% unless @myfliers_for_channel.empty? %>
+            <% unless @fliers_for_channel.empty? %>
 
-                 <% @myfliers_for_channel.each do |myflier| %>
+                 <% @fliers_for_channel.each do |flier| %>
 
                     <div class="fliers shadow">
-                    <%= image_tag Flier.find_by_id(myflier.flier_id).image.url(:thumb), class: "flimg" %>
-                    <%= link_to  Flier.find_by_id(myflier.flier_id).title, show_flier_path(:id => myflier.flier_id), class: "fltit" %>
-                    <%= button_to 'Add to MyBoard', myboard_add_flier_path(:flier_id => myflier.flier_id), class: "fladd" %>
+                    <%= image_tag flier.image.url(:thumb), class: "flimg" %>
+                    <%= link_to  flier.title, show_flier_path(:id => flier.id), class: "fltit" %>
+                    <%= button_to 'Add to MyBoard', myboard_add_flier_path(:flier_id => flier.id), class: "fladd" %>
                     </div>
 
                  <%end%>

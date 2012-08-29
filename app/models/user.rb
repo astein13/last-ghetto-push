@@ -113,8 +113,8 @@ class User < ActiveRecord::Base
 
 
 
-  def channel_fliers(channel_id)
-    fliers_for_liveboard.find_all_by_channel_id(channel_id)
+  def channel_fliers(channel_id, community_id, privacy_status)
+    fliers_for_liveboard.upcoming(Time.zone.now + 7200).find_all_by_channel_id_and_community_id_and_privacy_status(channel_id, community_id, privacy_status)
   end
 
  def timezone
