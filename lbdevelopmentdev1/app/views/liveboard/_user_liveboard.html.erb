@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+        <% @top_three.each do |topflier| %>
+          <%= image_tag topflier.image.url(:thumb) %><br/>
+          <%= topflier.title %>
+        <%end%>
+        <% @fliers_for_liveboard.each do |flier| %>
+
+        <div class="fliers shadow">
+            <div class="flierdata">
+                  <%= image_tag flier.image.url(:thumb), class: "flimg" %>
+                  <%= link_to  flier.title, show_flier_path(:id => flier.id), class: "fltit" %>
+
+                  <% if @fliers_for_adding.include?(flier) %>
+                  <%= button_to 'Add to MyBoard', myboard_add_flier_path(:flier_id => flier.id), class: "btn fladd" %>
+              <% else %>
+                  <p> Already added </p>
+              <%end%>
+            </div>
+        </div>
+              <%end%>
+</html>
