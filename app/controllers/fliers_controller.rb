@@ -1,6 +1,7 @@
+
 class FliersController < ApplicationController
   before_filter :can_view_flier?, :only => "show"
-
+  
 
   def show
     @flier = Flier.find_by_id(params[:id])
@@ -13,8 +14,11 @@ class FliersController < ApplicationController
   end
   
   def create
-    @channels = Channel.all
-     @flier = Flier.create!(params[:flier])
+     @channels = Channel.all
+     @flier = params[:flier]
+     @time = params[:flier][:start_time]
+     @flier['start_time'] = Chronic.parse(@time)
+     @flier = Flier.create!(@flier)
      @users = User.find_all_by_community_id(current_user.community_id)
 
     #create organization
@@ -44,7 +48,7 @@ class FliersController < ApplicationController
   
   def edit
     @flier = Flier.find_by_id(params[:flier_id])
-    #@flier.start_time = @flier.start_time.in_time_zone(current_user.timezone).strftime('%m/%d/%Y @ %l:%M %p')
+    @flier.start_time = @flier.start_time.in_time_zone(current_user.timezone).strftime('%m/%d/%Y @ %l:%M %p')
     @creator_id = @flier.creator_id.to_i
     @channels = Channel.all
    
@@ -56,7 +60,7 @@ class FliersController < ApplicationController
   end
   def update
          @new_flier = params[:flier]
-         #@new_flier.start_time = params[:flier][:start_time]
+         @new_flier['start_time'] = Chronic.parse(params[:flier][:start_time])
          @flier = Flier.find(params[:id])
       if @flier.update_attributes!(@new_flier)
       redirect_to :controller => 'fliers', :action => 'show', :id => params[:id]

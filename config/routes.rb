@@ -45,6 +45,8 @@ Lbdevelopmentv03::Application.routes.draw do
 
   post "fliers/create"
 
+  resources :fliers
+
   get "myfliers/invite"
 
   post "myfliers/send_invite"

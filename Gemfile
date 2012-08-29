@@ -22,9 +22,11 @@ gem 'paperclip', '3.0.4'
 gem 'rmagick'
 gem 'client_side_validations'
 gem 'bcrypt-ruby'
+gem 'strip_attributes'
 #gem 'dynamic_form'
 #gem 'unicorn'
 #gem 'newrelic_rpm'
+gem 'chronic'
 
 
 group :assets do
