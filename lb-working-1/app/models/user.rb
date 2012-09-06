@@ -93,7 +93,22 @@ class User < ActiveRecord::Base
   
  
 
-  def self.from_omniauth(auth)
+  def self.existing_user_from_omniauth(auth)
+if User.find_by_fbid(auth.uid)
+  where(auth.slice(:provider, :fbid)).find_by_fbid(auth.uid).tap do |user|
+    user.provider = auth.provider
+    user.fbid = auth.uid
+    user.fname = auth.info.first_name
+    user.lname = auth.info.last_name
+    user.image_url = auth.info.image
+    user.oauth_token = auth.credentials.token
+    user.oauth_exp = Time.at(auth.credentials.expires_at)
+    user.save!
+  end
+  end
+  end
+
+  def self.new_user_from_omniauth(auth)
 
   where(auth.slice(:provider, :fbid)).find_or_initialize_by_fbid(auth.uid).tap do |user|
     user.provider = auth.provider

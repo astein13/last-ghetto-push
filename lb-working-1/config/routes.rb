@@ -50,10 +50,13 @@ Lbdevelopmentv03::Application.routes.draw do
   post "myfliers/send_invite"
   resources :users
   resources :fliers
-  resources :invitations
+ 
 
   get "invitations/new"
+  post "invitations/store_token"
   post "invitations/create"
+ 
+  
   get "liveboard/index"
 
   get "users/create"
@@ -123,7 +126,7 @@ Lbdevelopmentv03::Application.routes.draw do
   #invitation matches
   match 'new_invitation', to: 'invitations#new'
   match 'send_invitation', to: 'invitations#create'
-  
+  match 'check_token', to: 'invitations#store_token'
 
 
 

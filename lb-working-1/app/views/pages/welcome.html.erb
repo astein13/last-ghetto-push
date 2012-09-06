@@ -22,7 +22,10 @@
         <div id="loginitems">
             <div class="signin">
                     <div class="fbdesc">Are you an individual?</div>
-                    <a href="../auth/facebook" class="fbbtn" id ="sign_in"></a>
+                    <%= form_tag :controller => 'invitations', :action => 'store_token' do %>
+                    <%= text_field_tag :token %>
+                    <%= submit_tag 'Log-in', :class =>"fbbtn", :id => "login" %>
+                    <% end %>
             </div>
 
             <div class="orgsignin">

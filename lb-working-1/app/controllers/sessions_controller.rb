@@ -3,13 +3,27 @@ class SessionsController < ApplicationController
   skip_before_filter :has_community?
   
 #for user
-  def create   
-    user = User.from_omniauth(env["omniauth.auth"])
-    friendship = Friendship.get_friends(user)
-    session[:user_id] = user.id
-    redirect_to liveboard_path
+  def create
+    omnihash = env["omniauth.auth"]
+    if user = User.existing_user_from_omniauth(env["omniauth.auth"])
+      session[:user_id] = user.id
+      redirect_to liveboard_path
+    
+   else
+    if token = cookies[:token]
+      if @invitation = Invitation.find_by_invitation_token(token)
+         @invitation.delete
+         user = User.new_user_from_omniauth(omnihash)
+         friendship = Friendship.get_friends(user)
+         session[:user_id] = user.id
+         redirect_to liveboard_path
+      else
+        redirect_to root_url, :notice => "You must enter a valid invitation token to join the Liveboard."
+    
+      end
+    end
+    end
   end
-
   def destroy
     session[:user_id] = nil
     redirect_to root_url

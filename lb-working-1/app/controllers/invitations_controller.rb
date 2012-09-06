@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-
+  skip_before_filter :logged_in_check, :only => 'store_token'
   def new
     @invitation = Invitation.new
   end
@@ -12,8 +12,14 @@ class InvitationsController < ApplicationController
       flash[:notice] = "Thank you, invitation sent."
       redirect_to root_url
     end
-    
+  end
+   def store_token
+     if params[:token]
+       cookies[:token] = params[:token]
+     end
+     redirect_to '/auth/facebook'
+   end
     
   end
   
-end
+
