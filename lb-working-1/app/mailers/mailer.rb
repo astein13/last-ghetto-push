@@ -6,12 +6,13 @@ class Mailer < ActionMailer::Base
   #
   #   en.mailer.invitation.subject
   #
-  def invitation(invitation)
-    @sender = User.find_by_id(invitation.sender_id)
-    @invitation = invitation
+  def invitation(invitation_id)
+    @invitation = Invitation.find(invitation_id)
+    @sender = User.find_by_id(@invitation.sender_id)
+    
     
 
-    mail(to: invitation.recipient_email,
+    mail(to: @invitation.recipient_email,
          from: 'donotreply@theliveboard.com',
          subject: @sender.name + " has invited you to try the Liveboard"
          )

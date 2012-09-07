@@ -50,7 +50,7 @@ Lbdevelopmentv03::Application.routes.draw do
   post "myfliers/send_invite"
   resources :users
   resources :fliers
- 
+  resources :invitations
 
   get "invitations/new"
   post "invitations/store_token"
