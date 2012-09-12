@@ -50,7 +50,5 @@ class Flier < ActiveRecord::Base
     where("community_id = ?", community_id)
   end
 
-
-
 end
 
