@@ -32,17 +32,21 @@ class FliersController < ApplicationController
      @flier['start_time'] = Chronic.parse(@time)
      @flier = Flier.create!(@flier)
      @users = User.find_all_by_community_id(current_user.community_id)
-     if session[:user_id]
-       @user_type = 1
-     else
-       @user_type = 0
-     end
     #create myfliers for each user in the community
-      Resque.enqueue(CreateMyfliersForEachUser, @user_type, current_user.community_id, @flier.id)
+  @users = User.find_all_by_community_id(community_id)
+  @users.each do |user|
+      Myflier.create!(:user_id => user.id, :flier_id => @flier.id, :attending_status => nil, :myscore => 100)
+  end
+
+
     if session[:user_id]
-       redirect_to :controller => :myfliers, :action => :invite, :flier_id => @flier.id
+      @creator_myflier = Myflier.find_by_user_id_and_flier_id(current_user.id, @flier.id)
+      @creator_myflier.update_attribute(:attending_status, '9')
+        redirect_to :controller => :myfliers, :action => :invite, :flier_id => @flier.id
     end
+    
     if session[:organization_id]
+      @creator_organizationflier = OrganizationFlier.create!(:organization_id => current_user.id, :flier_id=>@flier.id, :attending_status => '9')
       redirect_to myboard_path
     end
 

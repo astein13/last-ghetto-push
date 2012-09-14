@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(params[:invitation])
     @invitation.sender_id = current_user.id
     if @invitation.save
-    Resque.enqueue(SendEmail, @invitation.id)
+    Mailer.invitation(@invitation).deliver
       flash[:notice] = "Thank you, invitation sent."
       redirect_to root_url
     end

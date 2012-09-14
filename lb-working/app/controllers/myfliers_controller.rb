@@ -28,7 +28,8 @@ class MyfliersController < ApplicationController
     @flier = params[:flier_id]
     @inviter_id = current_user.id
     @invitees.each do |invitee|
-      Resque.enqueue(SendInvitations, @inviter_id, invitee, @flier)
+      @invitation = Myflier.find_by_user_id_and_flier_id(invitee.id, @flier.id)
+      @invitation.update_attributes(:attending_status => 0, :inviter_id => @inviter_id)
     end
       redirect_to myboard_path
     end
