@@ -33,7 +33,7 @@ class FliersController < ApplicationController
      @flier = Flier.create!(@flier)
      @users = User.find_all_by_community_id(current_user.community_id)
     #create myfliers for each user in the community
-  @users = User.find_all_by_community_id(community_id)
+  @users = User.find_all_by_community_id(current_user.community_id)
   @users.each do |user|
       Myflier.create!(:user_id => user.id, :flier_id => @flier.id, :attending_status => nil, :myscore => 100)
   end
